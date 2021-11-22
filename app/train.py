@@ -40,9 +40,3 @@ def evaluate_model(X: pd.DataFrame, model_path: Path) -> float:
     new_prediction = predict_model(model, data=X)
     score = check_metric(new_prediction['fake'], new_prediction['Label'], metric = 'Accuracy')
     return score
-
-# if __name__ == '__main__':
-#     ROOT_DIR = Path('./')
-#     MODELS_DIR = ROOT_DIR / 'models'
-#     response = train_model('./data/fake_users.csv', MODELS_DIR)
-#     print(response)

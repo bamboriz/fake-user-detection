@@ -16,14 +16,7 @@ def make_predictions(data_filepath: str, models_path: Path) -> np.ndarray:
     """
     X = pd.read_csv(data_filepath)
     X_preprocessed = preprocess(X)
-    X_preprocessed.pop('fake')
+    X_preprocessed.pop('fake') # not necessary bc predict model does not use this, but just want to show that the target col is not used for predicting 
     model = load_model(models_path)
     predictions = predict_model(model, data=X_preprocessed)
     return predictions['Label'].values
-
-
-# if __name__ == '__main__':
-#     ROOT_DIR = Path('./')
-#     MODELS_DIR = ROOT_DIR / 'models/model'
-#     response = make_predictions('./data/fake_users_test.csv', MODELS_DIR)
-#     print(response)
