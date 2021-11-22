@@ -16,6 +16,7 @@ def make_predictions(data_filepath: str, models_path: Path) -> np.ndarray:
     """
     X = pd.read_csv(data_filepath)
     X_preprocessed = preprocess(X)
+    X_preprocessed.pop('fake')
     model = load_model(models_path)
     predictions = predict_model(model, data=X_preprocessed)
     return predictions['Label'].values
